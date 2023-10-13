@@ -30,7 +30,7 @@ pipeline {
                 dir("tpjenkins/angular-app") {
                     sh "npm install"
                     sh "npm run build"
-                    sh "docker build -t frontapp ."
+                    sh "docker build -t front ."
                 }
             }
         }
