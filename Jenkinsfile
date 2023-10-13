@@ -28,9 +28,8 @@ pipeline {
        stage("Generate front image") {
             steps {
                 dir("tpjenkins/angular-app") {
-          
-                 sh "npm config set registry https://registry.npm.taobao.org/"
-                    sh "npm install --legacy-peer-deps" // Ignore les avertissements des dépendances obsolètes
+                    sh "npm install"
+                    sh "npm run build"
                     sh "docker build -t frontapp ."
                 }
             }
