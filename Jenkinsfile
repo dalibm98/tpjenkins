@@ -18,6 +18,7 @@ pipeline {
         stage ("Generate backend image") {
               steps {
                    dir("tpjenkins/springboot/app"){
+                       
                       sh "mvn clean install"
                       sh "docker build -t app ."
                   }                
@@ -28,9 +29,8 @@ pipeline {
             steps {
                 dir("tpjenkins/angular-app") {
           
-               
-                    sh "npm install"
-                    sh "npm run build"
+                 sh "npm config set registry https://registry.npm.taobao.org/"
+                    sh "npm install --legacy-peer-deps" // Ignore les avertissements des dépendances obsolètes
                     sh "docker build -t frontapp ."
                 }
             }
