@@ -29,7 +29,7 @@ services:
       - demo:/var/lib/mysql  
 
   front:
-    image: frontapp
+    image: front
     build: ./angular-app
     restart: always
     ports:
